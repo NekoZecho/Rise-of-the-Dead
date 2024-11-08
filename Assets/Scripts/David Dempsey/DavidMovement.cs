@@ -42,7 +42,7 @@ public class DavidMovement : MonoBehaviour
     {
         float xInput = Input.GetAxis("Horizontal");
         float yInput = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(xInput, yInput) * walkSpeed;
+        rb.linearVelocity = new Vector2(xInput, yInput) * walkSpeed;
         playerRunning = false;
     }
 
@@ -50,7 +50,7 @@ public class DavidMovement : MonoBehaviour
     {
         float xInput = Input.GetAxis("Horizontal");
         float yInput = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(xInput, yInput) * sprintSpeed;
+        rb.linearVelocity = new Vector2(xInput, yInput) * sprintSpeed;
         Stamina -= Time.deltaTime;
         playerRunning = true;
     }

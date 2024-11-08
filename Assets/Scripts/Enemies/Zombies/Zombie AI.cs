@@ -33,13 +33,13 @@ public class ZombieAI : MonoBehaviour
             //move in the direction of the player
             chaseDir.Normalize();
             dir = chaseDir;
-            rb.velocity = chaseDir * chaseSpeed;
+            rb.linearVelocity = chaseDir * chaseSpeed;
             hesitateTimer = 0;
         }
         else
         {
             hesitateTimer += Time.deltaTime;
-            GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            GetComponent<Rigidbody2D>().linearVelocity = Vector3.zero;
             if (hesitateTimer > hesitate)
             {
                 //despawn

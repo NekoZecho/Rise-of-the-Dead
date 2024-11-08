@@ -36,7 +36,7 @@ public class DavidShoot : MonoBehaviour
             mousePos.Normalize();
             //spawn in the bullet
             GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = mousePos * bulletSpeed;
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = mousePos * bulletSpeed;
             bullet.GetComponent<Rigidbody2D>().transform.up = mousePos;
             shootSound.Play();
            Destroy(bullet, bulletDrop);
@@ -51,7 +51,7 @@ public class DavidShoot : MonoBehaviour
             mousePos.Normalize();
             //spawn in the bullet
             GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = mousePos * bulletSpeed;
+            bullet.GetComponent<Rigidbody2D>().linearVelocity = mousePos * bulletSpeed;
             bullet.GetComponent<Rigidbody2D>().transform.up = mousePos;
             shootSound.Play();
             Destroy(bullet, bulletDrop);
