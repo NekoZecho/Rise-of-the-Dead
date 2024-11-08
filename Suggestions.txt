@@ -1,0 +1,9 @@
+Make Player Always Visible
+FINISH THE GAME
+Crosshair
+Bullet Tracers
+Zombie Death Animation/Sprite
+Character faces where the mouse is pointing
+Healthbar(? Not sure if I'm just blind)
+R for Restart
+Button prompt

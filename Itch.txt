@@ -1,0 +1,22 @@
+A small unfinished 2D COD Zombies inspired project.
+
+I made this as a first project in my game dev class with someone else for a group project. Decided to share a bit (mostly just to make it easier for friends to see lol).
+
+UNFINISHED but still playable.
+
+Controls:
+Move - WASD or Arrow Keys
+Fire (Click or Hold) - Left Mouse - or - CRTL
+Pause - Esc
+Flashlight Toggle - F
+Bright Lights Toggle (debug feature but still)- Y
+Buy Perk (when close enough) - E
+
+
+All Sound and Font Assets belong to their respective owners (and were all free use).
+
+(And yes, the zombies have no sound. Might change later, idk. Player Animations need work too.)
+
+
+May or may not be a major rework coming soon. ;3
+Feel free to put feedback or suggestions below in the comments, it would be greatly appreciated.
