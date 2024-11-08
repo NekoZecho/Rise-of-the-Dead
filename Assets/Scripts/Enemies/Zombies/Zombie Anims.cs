@@ -25,10 +25,6 @@ public class ZombieAnims : MonoBehaviour
         zAI = GetComponent<ZombieAI>();
         anim = GetComponent<Animator>();
         spTr = GetComponent<Transform>();
-        sideShadow = transform.Find("ShadowCaster Side");
-        shS = sideShadow.GetComponent<ShadowCaster2D>();
-        frontShadow = transform.Find("ShadowCaster Front");
-        shF = frontShadow.GetComponent<ShadowCaster2D>();
     }
 
 
@@ -40,23 +36,15 @@ public class ZombieAnims : MonoBehaviour
         float xDir = dir.x;
         float yDir = dir.y;
         Mathf.Abs(xDir);
-        if (IsInWalkingUpState() || IsInWalkingDownState())
-        {
-            verticalMovement();
-        }
-        else if (xDir < -0.5 && rotate == true)
+        if (xDir < -0.5 && rotate == true)
         {
             transform.rotation = Quaternion.Euler (0, 0, 0);
             rotate = false;
-            shS.enabled = true;
-            shF.enabled = false;
         }
         else if (xDir > 0.5 && rotate == false)
         {
             transform.rotation = Quaternion.Euler(0, -180, 0);
             rotate = true;
-            shS.enabled = true;
-            shF.enabled = false;
         }
         anim.SetFloat("x", xDir);
         anim.SetFloat("y", yDir);
@@ -75,11 +63,5 @@ public class ZombieAnims : MonoBehaviour
         float y = anim.GetFloat("y");
 
         return Mathf.Abs(x - targetX) < tolerance && Mathf.Abs(y - secondTargetY) < tolerance;
-    }
-
-    private void verticalMovement()
-    {
-        shS.enabled = false;
-        shF.enabled = true;
     }
 }
