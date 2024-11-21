@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DavidMovement : MonoBehaviour
 {
@@ -16,18 +17,22 @@ public class DavidMovement : MonoBehaviour
     float StaminaRegen;
     Rigidbody2D rb;
     public bool playerRunning;
+    [SerializeField]
+    InputActionReference moveActionRef;
+    bool runToggle = false;
 
     void Start()
     {
         maxStamina = Stamina;
         StaminaRegen = StaminaRegenT;
         rb = GetComponent<Rigidbody2D>();
+        runToggle = false;
     }
 
 
     void Update()
     {
-        if (Stamina > 0 && Input.GetKey(KeyCode.LeftShift))
+        if (Stamina > 0 && runToggle == true)
         {
             Sprint();
         }
@@ -40,17 +45,15 @@ public class DavidMovement : MonoBehaviour
 
     private void Walk()
     {
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
-        rb.linearVelocity = new Vector2(xInput, yInput) * walkSpeed;
+        Vector2 moveDir = moveActionRef.action.ReadValue<Vector2>();
+        rb.linearVelocity = moveDir * walkSpeed;
         playerRunning = false;
     }
 
     private void Sprint()
     {
-        float xInput = Input.GetAxis("Horizontal");
-        float yInput = Input.GetAxis("Vertical");
-        rb.linearVelocity = new Vector2(xInput, yInput) * sprintSpeed;
+        Vector2 moveDir = moveActionRef.action.ReadValue<Vector2>();
+        rb.linearVelocity = moveDir * sprintSpeed;
         Stamina -= Time.deltaTime;
         playerRunning = true;
     }
@@ -74,6 +77,18 @@ public class DavidMovement : MonoBehaviour
         else if (Stamina <= 0)
         { 
             StaminaRegen += Time.deltaTime;
+        }
+    }
+
+    public void toggleRun()
+    {
+        if (runToggle == false)
+        {
+            runToggle = true;
+        }
+        else if (runToggle == true)
+        {
+            runToggle = false;
         }
     }
 

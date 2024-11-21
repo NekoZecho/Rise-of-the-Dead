@@ -17,25 +17,18 @@ public class PauseMenu : MonoBehaviour
         Flashlight = GameObject.FindGameObjectWithTag("Flashlight");
     }
 
-   
+
     void Update()
     {
         //If you press the escape key
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Time.timeScale == 1) 
+            if (Time.timeScale == 1)
             {
-                //make the pause menu visible
-                GetComponent<Canvas>().enabled = true;
-                //also, stop the game from playing
-                Time.timeScale = 0;
-
-                Flashlight.SetActive(false);
+                Pause();
             }
             else
             {
-
-                Flashlight.SetActive(true);
                 Resume();
             }
         }
@@ -47,6 +40,7 @@ public class PauseMenu : MonoBehaviour
         GetComponent<Canvas>().enabled = false;
         //reset the time scale
         Time.timeScale = 1;
+        Flashlight.SetActive(true);
     }
 
     public void Retry()
@@ -62,5 +56,13 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         gameOver.GameOverScreen();
     }
-
+    public void Pause()
+    {
+        //make the pause menu visible
+        GetComponent<Canvas>().enabled = true;
+        //also, stop the game from playing
+        Time.timeScale = 0;
+        Flashlight.SetActive(false);
+    }
+    
 }

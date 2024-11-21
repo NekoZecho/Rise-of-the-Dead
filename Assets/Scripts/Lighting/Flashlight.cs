@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
 public class Flashlight : MonoBehaviour
 {
     GameObject player;
+    [SerializeField]
+    InputActionReference moveActionRef;
 
     private DavidInteract interact;
 
@@ -30,11 +33,7 @@ public class Flashlight : MonoBehaviour
 
     private void TheFlashlightThings()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        mousePos.z = 0;
-        mousePos = mousePos - transform.position;
-        mousePos.Normalize();
+        Vector2 mousePos = moveActionRef.action.ReadValue<Vector2>();
         transform.up = mousePos;
     }
 
