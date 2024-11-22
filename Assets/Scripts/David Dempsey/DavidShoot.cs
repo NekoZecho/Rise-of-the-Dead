@@ -27,9 +27,9 @@ public class DavidShoot : MonoBehaviour
 
     void Update()
     {
-
+        Vector2 input = moveActionRef.action.ReadValue<Vector2>();
         timer += Time.deltaTime;
-        if (timer > fireRate && Time.timeScale != 0 && moveActionRef.action.IsPressed())
+        if (timer > fireRate && Time.timeScale != 0 && input.magnitude > 0.5f)
         {
             timer = 0;
             Vector2 mousePos = moveActionRef.action.ReadValue<Vector2>();
@@ -39,6 +39,10 @@ public class DavidShoot : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().transform.up = mousePos;
             shootSound.Play();
            Destroy(bullet, bulletDrop);
+        }
+        else
+        {
+
         }
     }
 }
